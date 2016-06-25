@@ -1,3 +1,8 @@
+/**
+ * Created by Shikha Singh on 6/25/2016.
+ */
+
+
 (function () {
     angular.module("art").controller('ListArtController', ListArtController);
 
@@ -24,7 +29,7 @@
         }
 
         function init() {
-          //  var artistName = 'ShikhaSingh';
+            //  var artistName = 'ShikhaSingh';
             ArtistService
                 .findArtistById(self.artistId)
                 .then(function (response) {

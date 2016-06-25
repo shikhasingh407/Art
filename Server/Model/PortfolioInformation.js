@@ -7,5 +7,6 @@ var Schema = mongoose.Schema;
 exports.PortfolioInformationSchema = new Schema({
     _artist       : {type: mongoose.Schema.ObjectId , ref : "Artist"},
     name        : String,
-    description : String
+    description : String,
+    arts : []
 }, {collection: 'PortfolioInformation'});

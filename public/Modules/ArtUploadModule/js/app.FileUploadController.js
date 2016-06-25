@@ -20,15 +20,11 @@
     }
     else{
         self.form = artObj;
-      console.log(artObj);
     }
 
 
 
     function init() {
-      self.form = {
-
-      };
       ArtistService
           .findArtistById(self.artistId)
           .then(function(response){

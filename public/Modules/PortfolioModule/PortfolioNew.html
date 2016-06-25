@@ -11,7 +11,7 @@
                 <strong>New Portfolio</strong>
             </a>
             <p class="navbar-text pull-right">
-                <a ng-click="myForm.$valid && portfolioNewCtrl.createPortfolio(name, description); submitted=true" class="navbar-link">
+                <a href="#/artist/{{model.artistId}}/portfolio" ng-click="model.createPortfolio(name, description, 'portfolioList')">
                     <span class="glyphicon glyphicon-ok">
                     </span>
                 </a>
@@ -44,7 +44,7 @@
             <label for="desc">Portfolio Description:</label>
             <textarea ng-model="description" rows="4" type="desc" class="form-control" id="desc" placeholder="Add Details"></textarea>
         </div>
-        <a class="btn btn-success btn-block" ng-click="model.createPortfolio(name, description)">Let's start adding arts to your portfolio</a>
+        <a class="btn btn-success btn-block" ng-click="model.createPortfolio(name, description,'artList')">Let's start adding arts to your portfolio</a>
     </form>
 </div>
 

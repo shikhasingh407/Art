@@ -10,8 +10,10 @@ exports.ArtUploadSchema = new Schema({
   description: String,
   rating: Number,
   likes: Number,
-  sellingPrice: Number,
-  sellingSince: Date,
+  //sellingPrice: Number,
+  //sellingSince: Date,
+  availableFrom: {type: Date, default: Date.now},
+  startDate: {type: Date, default: Date.now},
   uploadedImages: []
 //{
 //    imageData : Buffer,

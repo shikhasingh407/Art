@@ -9,7 +9,7 @@
 
         vm.createPortfolio = createPortfolio;
 
-        function createPortfolio(name, description) {
+        function createPortfolio(name, description, location) {
             var newPortfolio = {
                 _artist: vm.artistId,
                 // _id: (new Date().getTime() + ""),
@@ -21,7 +21,11 @@
                 .then(function (response) {
                     var portfolio = response.data;
                     if (portfolio) {
-                        $location.url("/artist/" + vm.artistId + "/portfolio");
+                        if (location === 'portfolioList'){
+                            $location.url("/artist/" + vm.artistId + "/portfolio");
+                        } else {
+                            $location.url("/artist/" + vm.artistId + "/art/list");
+                        }
                     } else {
                         vm.error = "Unable to create the blog";
                     }
