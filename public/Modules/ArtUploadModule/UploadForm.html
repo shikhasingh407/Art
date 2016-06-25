@@ -1,0 +1,127 @@
+<div class="row">
+    <div class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3">
+        <div class="page-header" style="text-align: center">
+            <h1>Upload Art Form</h1>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Upload Your Art</h3>
+            </div>
+            <div class="panel-body">
+                <form id="fileUploadForm" name="uploadForm" ng-cloak>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-certificate" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" placeholder="Art Name" ng-model="uploadCtrl.form.artName">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" placeholder="Artist Name" disabled value="{{uploadCtrl.form.artistName}}">
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <p>Art Images</p>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-camera"/></span>
+                                        <input type="file" class="form-control" placeholder="Art Images" name="uploadedData" ng-model="restaurantCtrl.form.uploadedImages"
+                                               accept="image/*" multiple>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <p>Art Type</p>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="btn-group">
+                                        <select ng-model="uploadCtrl.form.artType" class="dropdown-menu">
+                                            <option value="type" ng-repeat="type in uploadCtrl.artType">{{type}}</option>
+                                        </select>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <p>Art Description</p>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <textarea placeholder="Art Description" class="form-control" ng-model="uploadCtrl.form.description" type="text"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <p>Start Date</p>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
+                                        <input class="form-control" type="date" placeholder="Creation Date" ng-model="uploadCtrl.form.creationDate">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <p>Availabe From</p>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
+                                        <input class="form-control" type="date" placeholder="Available From" ng-model="uploadCtrl.form.availableDateOfPurchase">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="panel-footer clearfix">
+                <div class="pull-right">
+                    <button type="button" class="btn btn-default" aria-label="Settings" ng-click="uploadCtrl.uploadArt()">
+                        SAVE
+                    </button>
+                    <button type="button" class="btn btn-default btn btn-danger" ng-click="uploadCtrl.cancel()">
+                        DELETE
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

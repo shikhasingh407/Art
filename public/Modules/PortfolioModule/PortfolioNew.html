@@ -1,0 +1,51 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#/artist/{{model.artistId}}/portfolio" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left">
+                    </span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="#/artist/{{model.artistId}}/portfolio/new">
+                <strong>New Portfolio</strong>
+            </a>
+            <p class="navbar-text pull-right">
+                <a ng-click="myForm.$valid && portfolioNewCtrl.createPortfolio(name, description); submitted=true" class="navbar-link">
+                    <span class="glyphicon glyphicon-ok">
+                    </span>
+                </a>
+            </p>
+
+        </div>
+    </div>
+</nav>
+
+<div ng-if="model.error"
+     class="alert alert-danger"
+     role="alert">
+    {{model.error}}
+</div>
+
+<hr> <hr>
+
+
+<div class="container">
+    <form name="myForm" role="form">
+        <div class="form-group">
+            <label for="name">Portfolio Name</label>
+            <input ng-class="{ 'error-when' : submitted && myForm.name.$error.required }" name="name" ng-model="name" required type="text" class="form-control" id="name" placeholder="Google">
+        <span ng-show="submitted && myForm.name.$error.required"
+              class="err">
+            *Required Field
+        </span>
+        </div>
+        <div class="form-group">
+            <label for="desc">Portfolio Description:</label>
+            <textarea ng-model="description" rows="4" type="desc" class="form-control" id="desc" placeholder="Add Details"></textarea>
+        </div>
+        <a class="btn btn-success btn-block" ng-click="model.createPortfolio(name, description)">Let's start adding arts to your portfolio</a>
+    </form>
+</div>
+
+

@@ -1,0 +1,43 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#/artist/{{model.artistId}}/profile" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left">
+                    </span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="#/artist/{{model.artistId}}/blog">
+                <strong>Blogs</strong>
+            </a>
+            <p class="navbar-text pull-right">
+                <a href="#/artist/{{model.artistId}}/blog/new" class="navbar-link">
+                    <span class="glyphicon glyphicon-plus">
+                    </span>
+                </a>
+            </p>
+
+        </div>
+    </div>
+</nav>
+
+<hr>
+<hr>
+<!--<div wam-sortable wam-callback="model.reorderWidget(start, end)" class="container">-->
+    <div ng-repeat= "blog in model.blogs | orderBy : 'order'" class="jga-widget">
+        {{blog.name}}
+        <a href="#/artist/{{model.artistId}}/blog/{{blog._id}}" class="pull-right">
+            <span class="glyphicon glyphicon-cog"></span>
+        </a>
+             <!--<div ng-if="widget.formatted" text-angular ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],-->
+                <!--['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],-->
+                <!--['indent','outdent'],['html']]"></div>-->
+        <!--<input ng-if="!widget.formatted && (!widget.rows || widget.rows===1)"-->
+               <!--placeholder="{{widget.textInput.placeholder}}" class="form-control"/>-->
+                <!--<textarea ng-if="!widget.formatted && (widget.rows > 1)"-->
+                          <!--rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"-->
+                          <!--class="form-control">{{widget.text}}</textarea>-->
+
+    </div>
+<!--</div>-->
+

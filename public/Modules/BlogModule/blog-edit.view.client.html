@@ -1,0 +1,59 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#/artist/{{model.artistId}}/blog/" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left">
+                    </span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="#/artist/{{model.artistId}}/blog/{{model.blogId}}">
+                Edit Blog
+            </a>
+            <p class="navbar-text pull-right">
+                <a ng-click="model.updateBlog()" class="navbar-link">
+                    <span class="glyphicon glyphicon-ok">
+                    </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+<hr><hr>
+<div class="container">
+    <div ng-show="model.error"
+         class="alert alert-danger">
+        {{model.error}}
+    </div>
+    <form role="form">
+        <form>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input ng-class="{ 'error-when' : submitted && myForm.name.$error.required }" ng-model="model.blog.name" name="name" type="text" class="form-control" id="name" placeholder="Shikha Singh" required/>
+                <span ng-show="submitted && myForm.name.$error.required" class="err">*Required Field</span>
+            </div>
+
+            <label for="html">Description</label>
+            <div id="html" class="form-group" ng-model="model.blog.text"
+                 text-angular
+                 ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+                ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+                ['indent','outdent'],['html']]">
+            </div>
+
+        </form>
+        <a class="btn btn-danger btn-block" ng-click="model.deleteBlog()">Delete</a>
+    </form>
+</div>
+
+<!--<nav class="navbar navbar-default navbar-fixed-bottom">-->
+    <!--<div class="container-fluid">-->
+        <!--<div class="navbar-footer">-->
+            <!--<p class="navbar-text pull-right">-->
+                <!--<a href="#/user/{{model.userId}}">-->
+                    <!--<span class="glyphicon glyphicon-user"></span>-->
+                <!--</a>-->
+            <!--</p>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</nav>-->
