@@ -26,7 +26,7 @@
         init();
 
         function reorderBlog(start, end){
-            console.log(start+" "+end);
+          //  console.log(start+" "+end);
             BlogService
                 .reorderBlog(vm.artistId, start, end)
                 .then(

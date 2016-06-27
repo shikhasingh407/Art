@@ -23,20 +23,25 @@
 <hr>
 
 <hr>
-<div class="container">
-    <form name="myForm" role="form">
+<div class="container-fluid">
+    <img src="Modules/4.jpg" width="50%" class="background-image image-responsive">
+
+        <form id="myForm" name="myForm" role="form" ng-app>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input ng-class="{ 'has-error' : submitted && myForm.name.$invalid }" ng-model="name"
+                       name="name" type="text" class="form-control" id="name" placeholder="Shikha Singh" required/>
+                <span ng-show="submitted && myForm.name.$invalid" class="help-inline">*Required Field</span>
+            </div>
+
+
         <div class="form-group">
-            <label for="name">Website Name</label>
-            <input ng-class="{ 'error-when' : submitted && myForm.name.$error.required }" name="name" ng-model="name" required type="text" class="form-control" id="name" placeholder="Google">
-        <span ng-show="submitted && myForm.name.$error.required"
-              class="err">
-            *Required Field
-        </span>
+            <label for="desc">Blog Description:</label>
+            <textarea ng-model="description" rows="4" type="desc" class="form-control" id="desc"
+                      placeholder="Add Details"></textarea>
         </div>
-        <div class="form-group">
-            <label for="desc">Website Description:</label>
-            <textarea ng-model="description" rows="4" type="desc" class="form-control" id="desc" placeholder="Add Details"></textarea>
-        </div>
+        </form>
+    </div>
     </form>
 </div>
 

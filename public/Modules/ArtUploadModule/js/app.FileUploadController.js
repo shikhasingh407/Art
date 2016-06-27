@@ -13,6 +13,9 @@
 
     self.uploadArt = uploadArt;
     self.cancel = cancel;
+    self.editArt = editArt;
+
+    self.editMode = false;
 
     var artObj = fileService.getArt2();
     if(artObj === null){
@@ -21,6 +24,9 @@
     }
     else{
         self.form = artObj || {};
+        self.form.availableFrom = new Date(self.form.availableFrom);
+      self.form.startDate = new Date(self.form.startDate);
+      self.editMode = true;
     }
 
 
@@ -39,6 +45,21 @@
       var formData = new FormData( document.getElementById("fileUploadForm"));
       formData.append("artData", JSON.stringify(self.form));
       fileService.uploadArt(formData).then(function(response) {
+        if (!response.status) {
+          swal("Success", "The art was successfully saved in your database.", "success");
+          $location.url("/artist/" + self.artistId + "/art/list");
+        } else {
+          swal("Error", "The art was failed to save, please try again later", "error");
+        }
+      });
+    }
+
+    //edit art
+    function editArt() {
+      self.form.artistName = self.artistName;
+      var formData = new FormData( document.getElementById("fileUploadForm"));
+      formData.append("artData", JSON.stringify(self.form));
+      fileService.editArt(formData).then(function(response) {
         if (!response.status) {
           swal("Success", "The art was successfully saved in your database.", "success");
           $location.url("/artist/" + self.artistId + "/art/list");

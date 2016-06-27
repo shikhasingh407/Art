@@ -13,11 +13,11 @@
         var vm = this;
 
         vm.portfolioId = $routeParams.portfolioId;
-
+        vm.deletePortfolio = deletePortfolio;
         vm.deleteArtFromPortfolio = deleteArtFromPortfolio;
         //vm.getAllArt = getAllArt;
         vm.artistId = $routeParams.id;
-
+        vm.updatePortfolio = updatePortfolio;
         vm.portfolio = [];
 
         //vm.deleteArt = deleteArt;
@@ -49,13 +49,46 @@
         init();
 
 
-        function deletePortfolio() {
-            var result = PortfolioService.deletePortfolio(vm.portfolioId);
-            if (result) {
-                $location.url("/artist/" + vm.artistId + "/portfolio");
-            } else {
-                vm.error = "Unable to delete the portfolio";
-            }
+        function updatePortfolio() {
+            PortfolioService
+                .updatePortfolio(vm.portfolioId, vm.portfolio)
+                .then(
+                    function (response) {
+                        if (response.data)
+                            $location.url("/artist/" + vm.artistId + "/portfolio" );
+                        else
+                            vm.error = "Unable to update";
+                    },
+                    function (error){
+                        vm.error = "Server was unable to update";
+                    });
+
         }
+
+        function deletePortfolio() {
+            //console.log("ontroller")
+            PortfolioService
+                .deletePortfolio(vm.portfolioId)
+                .then(
+                    function (response) {
+                        var result = response.data;
+                        if (result) {
+                            $location.url("/artist/" + vm.artistId + "/portfolio");
+                        } else {
+                            vm.error = "Unable to delete the portfolio";
+                        }
+                    }
+                );
+        }
+
+
+        //
+        //    var result = PortfolioService.deletePortfolio(vm.portfolioId);
+        //    if (result) {
+        //        $location.url("/artist/" + vm.artistId + "/portfolio");
+        //    } else {
+        //        vm.error = "Unable to delete the portfolio";
+        //    }
+        //}
     }
 })();

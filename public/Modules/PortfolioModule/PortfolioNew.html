@@ -11,7 +11,8 @@
                 <strong>New Portfolio</strong>
             </a>
             <p class="navbar-text pull-right">
-                <a href="#/artist/{{model.artistId}}/portfolio" ng-click="model.createPortfolio(name, description, 'portfolioList'); submitted=true">
+                <a href="#/artist/{{model.artistId}}/portfolio"
+                   ng-click="myForm.$valid && model.createPortfolio(name, description, 'portfolioList'); submitted=true">
                     <span class="glyphicon glyphicon-ok">
                     </span>
                 </a>
@@ -31,23 +32,48 @@
 
 
 <div class="container">
-    <form name="myForm" role="form">
+    <img src="Modules/1.jpg" width="100%" class="background-image image-responsive">
+    <div ng-show="model.error"
+         class="alert alert-danger">
+        {{model.error}}
+    </div>
+    <!--removed ng-app-->
+    <form id="myForm" name="myForm" role="form" >
         <div class="form-group">
-            <label for="name">Portfolio Name</label>
-            <input name="name"
-                   ng-model="name" required
-                   type="text"
+            <label for="name">Portfolio Name:</label>
+            <input ng-class="{ 'has-error' : submitted && myForm.name.$error.required }" ng-model="name"
+                   name="name" type="text" class="form-control" id="name" placeholder="Shikha Singh" required/>
+            <span ng-show="submitted && myForm.name.$error" class="help-inline">*Required Field</span>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input ng-model="description"
+                   type="textarea"
                    class="form-control"
-                   id="name" placeholder="Google">
-        <span ng-show="submitted && myForm.name.$error.required"
-              class="err">
-            *Required Field
-        </span>
+                   id="description"
+                   placeholder="portfolio description">
         </div>
-        <div class="form-group">
-            <label for="desc">Portfolio Description:</label>
-            <textarea ng-model="description" rows="4" type="desc" class="form-control" id="desc" placeholder="Add Details"></textarea>
-        </div>
+        </form>
+    <!--<form name="myForm" role="form">-->
+        <!--<div class="form-group">-->
+            <!--<label for="name">-->
+                <!--Portfolio Name-->
+            <!--</label>-->
+            <!--<input name="name"-->
+                   <!--ng-model="name" required-->
+                   <!--type="text"-->
+                   <!--class="form-control"-->
+                   <!--id="name" placeholder="Google">-->
+        <!--<span ng-show="submitted && myForm.name.$error.required"-->
+              <!--class="err">-->
+            <!--*Required Field-->
+        <!--</span>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label for="desc">Portfolio Description:</label>-->
+            <!--<textarea ng-model="description" rows="4" type="desc" class="form-control" id="desc" placeholder="Add Details"></textarea>-->
+        <!--</div>-->
         <a class="btn btn-success btn-block" ng-click="model.createPortfolio(name, description,'artList')">Let's start adding arts to your portfolio</a>
     </form>
 </div>

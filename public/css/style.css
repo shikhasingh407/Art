@@ -5,3 +5,77 @@ p.navbar-text.pull-right {
 p.navbar-text.pull-left {
     margin-left: 15px;
 }
+
+img.background-image {
+    height: auto;
+    left: 0;
+    min-height: 100%;
+    min-width: 1024px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.jga-widget-tool {
+    position: absolute;
+    right: 15px;
+    background-color: white;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-bottom-left-radius: 8px;
+    opacity: 0.7;
+}
+
+li.borderless {
+    border: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.youtube-widget {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+}
+.youtube-widget iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+span.help-inline{
+    color:#D63301;
+    background-color: #FFCCBA;
+}
+
+div.ui-state-error-text.custom-err{
+    color:#D63301;
+    background-color: #FFCCBA;
+}
+
+.pointer-fix {
+    cursor: pointer;
+}
+
+.has-error {
+    background-color: #ffebfa;
+}
+
+.has-error:focus{
+    border-color: #FF0000;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+input.ng-touched.ng-invalid-required.form-control:focus {
+    border-color: #FF0000;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+input.ng-touched.ng-invalid-required.form-control {
+    background-color: #ffebfa;
+}

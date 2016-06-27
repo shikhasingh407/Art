@@ -15,7 +15,7 @@
                 .findPortfoliosForArtistId(vm.artistId)
                 .then(function(response){
                     vm.portfolios = response.data;
-                    console.log(vm.portfolios);
+                    //console.log(vm.portfolios);
                 });
         }
         init();

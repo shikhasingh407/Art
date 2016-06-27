@@ -24,7 +24,8 @@
 <hr><hr>
 
 
-<div class="container">
+<div class="row">
+    <img src="Modules/4.jpg" width="100%" class="background-image image-responsive">
     <ul class="list-group">
         <li ng-repeat="portfolio in model.portfolios" class="list-group-item borderless">
                 <a>{{portfolio.name}}</a>
@@ -33,7 +34,7 @@
 
             <a href="#/artist/{{model.artistId}}/portfolio/{{portfolio._id}}" class="pull-right">
                 Edit
-                <span class="glyphicon glyphicon-cog"></span>
+                <span class="glyphicon glyphicon-pencil"></span>
             </a>
         </li>
     </ul>

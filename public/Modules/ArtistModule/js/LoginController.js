@@ -13,7 +13,6 @@
                 .then(
                     function(response){
                         var artist = response;
-                        console.log(artist);
                         if(artist){
                             $location.url("/artist/"+ artist._id);
 

@@ -102,6 +102,8 @@
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-calendar-o" aria-hidden="true"></i></span>
                                         <input class="form-control" type="date" placeholder="Available From" ng-model="uploadCtrl.form.availableFrom">
+                                        <!--{{ date_expression | date : format : timezone}}-->
+                                       <!-- <uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></uib-datepicker> -->
                                     </div>
                                 </div>
                             </div>
@@ -113,8 +115,11 @@
 
             <div class="panel-footer clearfix">
                 <div class="pull-right">
-                    <button type="button" class="btn btn-default" aria-label="Settings" ng-click="uploadCtrl.uploadArt()">
+                    <button type="button" ng-hide="uploadCtrl.editMode" class="btn btn-default" aria-label="Settings" ng-click="uploadCtrl.uploadArt()">
                         SAVE
+                    </button>
+                    <button type="button" ng-show="uploadCtrl.editMode" class="btn btn-default" aria-label="Settings" ng-click="uploadCtrl.editArt()">
+                        Update
                     </button>
                     <a ng-href="#/artist/{{uploadCtrl.artistId}}/art/list" class="btn btn-default" >BACK</a>
                     <button type="button" class="btn btn-default" ng-click="uploadCtrl.cancel()">

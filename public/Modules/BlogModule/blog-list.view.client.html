@@ -24,11 +24,15 @@
 
 <hr>
 <hr>
+
+<div class="row container-fluid">
+    <img src="Modules/10.jpg" width="100%" class="background-image image-responsive">
 <!--<div wam-sortable wam-callback="model.reorderWidget(start, end)" class="container">-->
     <div ng-repeat= "blog in model.blogs | orderBy : 'order'" class="jga-widget">
+
         {{blog.name}}
         <a href="#/artist/{{model.artistId}}/blog/{{blog._id}}" class="pull-right">
-            <span class="glyphicon glyphicon-cog"></span>
+            <span class="glyphicon glyphicon-pencil"></span>
         </a>
              <!--<div ng-if="widget.formatted" text-angular ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],-->
                 <!--['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],-->
@@ -42,3 +46,4 @@
     </div>
 <!--</div>-->
 
+</div>

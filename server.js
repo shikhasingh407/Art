@@ -123,6 +123,49 @@ app.post('/rest/upload', function (req, res) {
 
 });
 
+app.put('/rest/upload', function (req, res) {
+    var artData = JSON.parse(req.body.artData);
+    artData.uploadedImages = [];
+    for (var i = 0; i < req.files.length; i++) {
+        var image = {
+            imageData: fs.readFileSync(req.files[i].path),
+            imageName: req.files[i].originalname,
+            fileName: req.files[i].filename,
+            path: req.files[i].path,
+            size: req.files[i].size,
+            encoding: req.files[i].encoding
+        };
+        artData.uploadedImages.push(image);
+        console.log(image);
+    }
+    artModel
+        .update({_id: artData._id},{
+            $set: {
+                //uniqueName: artData.uniqueName,
+                artName: artData.artname,
+                //artistName: artData.artistName,
+                artType: artData.artType,
+                description: artData.description,
+                //rating: artData.rating,
+                //likes: artData.likes,
+                availableFrom: artData.availableFrom,
+                startDate: artData.startDate,
+                uploadedImages: artData.uploadedImages
+            }
+        })
+        .then(
+            function(newArt) {
+                console.log(newArt);
+                res.json(newArt);
+            },
+            function(error) {
+                res.sendStatus(400);
+            }
+        );
+
+
+});
+
 
 
 

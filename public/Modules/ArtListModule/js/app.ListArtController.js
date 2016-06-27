@@ -19,16 +19,14 @@
                 .findPortfoliosForArtistId(self.artistId)
                 .then(function(response){
                     self.portfolios = response.data;
-                    console.log(self.portfolios)
                 });
         }
 
         function init() {
-          //  var artistName = 'ShikhaSingh';
             ArtistService
                 .findArtistById(self.artistId)
                 .then(function (response) {
-                    artistName = response.data.username;
+                    artistName = response.data.name;
                     getAllArt(artistName);
                     getPortfolios();
                 });
@@ -37,7 +35,6 @@
         init();
 
         function editArt(art) {
-            console.log('edit art called');
             fileService.setArt2(art);
             $location.path("/artist/" + self.artistId + "/art");
         }

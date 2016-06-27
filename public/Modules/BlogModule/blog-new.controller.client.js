@@ -16,6 +16,7 @@
                 name: name,
                 description: description
             };
+            //console.log(newBlog);
             BlogService
                 .createBlog(newBlog)
                 .then(function (response) {

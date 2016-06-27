@@ -80,14 +80,7 @@
                         </div>
                     </div>
                     <br/>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-calendar-o"/></span>
-                                <input type="date" class="form-control" ng-model="artistCtrl.artist.dob">
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="row">
                         <div class="col-xs-12">
                             <p>Display Pic</p>
@@ -101,6 +94,7 @@
                             <input class="form-control" type="file" id="triggerDisplayPic" ng-model="artistCtrl.displayPic" name="uploadedData" onchange="angular.element(this).scope().showDisplayPic()">
 
                             <br/>
+
                             <image ng-src="{{artistCtrl.displayPic}}" class="img-circle img-responsive"/>
                         </div>
 

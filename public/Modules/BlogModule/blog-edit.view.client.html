@@ -11,7 +11,7 @@
                 Edit Blog
             </a>
             <p class="navbar-text pull-right">
-                <a ng-click="model.updateBlog()" class="navbar-link">
+                <a ng-click="myForm.$valid && model.updateBlog(); submitted=true" class="navbar-link">
                     <span class="glyphicon glyphicon-ok">
                     </span>
                 </a>
@@ -21,16 +21,18 @@
 </nav>
 <hr><hr>
 <div class="container">
+    <img src="Modules/4.jpg" width="100%" class="background-image image-responsive">
     <div ng-show="model.error"
          class="alert alert-danger">
         {{model.error}}
     </div>
-    <form role="form">
-        <form>
+
+        <form id="myForm" name="myForm" role="form" ng-app>
             <div class="form-group">
                 <label for="name">Name:</label>
-                <input ng-class="{ 'error-when' : submitted && myForm.name.$error.required }" ng-model="model.blog.name" name="name" type="text" class="form-control" id="name" placeholder="Shikha Singh" required/>
-                <span ng-show="submitted && myForm.name.$error.required" class="err">*Required Field</span>
+                <input ng-class="{ 'has-error' : submitted && myForm.name.$error.required }" ng-model="model.blog.name"
+                       name="name" type="text" class="form-control" id="name" placeholder="Shikha Singh" required/>
+                <span ng-show="submitted && myForm.name.$error" class="help-inline">*Required Field</span>
             </div>
 
             <div class="form-group">
@@ -51,7 +53,7 @@
 
         </form>
         <a class="btn btn-danger btn-block" ng-click="model.deleteBlog()">Delete</a>
-    </form>
+
 </div>
 
 <!--<nav class="navbar navbar-default navbar-fixed-bottom">-->

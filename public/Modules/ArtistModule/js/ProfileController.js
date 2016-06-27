@@ -19,7 +19,7 @@
                 .findArtistById(id)
                 .then(function(response){
                     vm.artist = response.data;
-                    console.log(vm.artist);
+
                 });
         }
         init();

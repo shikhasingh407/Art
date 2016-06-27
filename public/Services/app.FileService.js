@@ -14,12 +14,21 @@
       deleteArt: deleteArt,
       setArt2 : setArt2,
       getArt2 : getArt2,
-      deleteArtFromPortfolio: deleteArtFromPortfolio
-      //editArt: editArt
+      deleteArtFromPortfolio: deleteArtFromPortfolio,
+      editArt: editArt
     };
 
     function uploadArt(formData) {
       return $http.post(baseUrl + "/upload", formData, {
+        headers: {
+          'Content-Type': undefined
+        },
+        transformRequest: angular.identity
+      }).then(successfulProcess).catch(failedProcess);
+    }
+
+    function editArt(formData) {
+      return $http.put(baseUrl + "/upload", formData, {
         headers: {
           'Content-Type': undefined
         },
@@ -49,7 +58,7 @@
 
     function deleteArtFromPortfolio(artId, portfolio){
       console.log(portfolio);
-      return $http.update(baseUrl +"/portfolio/"+portfolio._id, portfolio).then(successfulProcess).catch(failedProcess);
+      return $http.put(baseUrl +"/portfolio/"+portfolio._id, portfolio).then(successfulProcess).catch(failedProcess);
     }
 
     function getArt2(){
