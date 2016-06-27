@@ -11,6 +11,7 @@
             createPortfolio: createPortfolio,
             findPortfolioByPortfolioId: findPortfolioByPortfolioId,
             findPortfoliosForArtistId: findPortfoliosForArtistId
+
             //reorderPortfolio: reorderPortfolio
 
         };

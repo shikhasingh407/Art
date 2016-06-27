@@ -435,11 +435,12 @@ app.get('/rest/allArts/:artistName', function (req, res) {
 
 app.delete('/rest/portfolio/:portfolioId', function deletePortfolio(req, res){
     var id = req.params.portfolioId;
+    console.log(id);
     portfolioModel
         .remove({_id: id})
         .then(
             function(stats){
-                console.log(stats);
+                console.log("deleted");
                 res.send(200);
             },
             function(error){
@@ -521,7 +522,6 @@ app.delete('/rest/art/:artId', function deleteArt(req,res){
         .remove({_id: id})
         .then(
             function(stats){
-                console.log(stats);
                 res.send(200);
             },
             function(error){
@@ -529,4 +529,25 @@ app.delete('/rest/art/:artId', function deleteArt(req,res){
             });
 
 });
+
+
+
+app.put('/rest/portfolio/:portfolioId', function deleteArtFromPortfolio(req,res){
+
+    var id = req.params.portfolioId;
+    var newPortfolio = req.body;
+    portfolioModel
+        .update({_id: newPortfolio._id},{
+                $set: newPortfolio
+            })
+        .then(
+            function(stats){
+                res.send(200);
+            },
+            function(error){
+                res.sendStatus(400);
+            });
+
+});
+
 

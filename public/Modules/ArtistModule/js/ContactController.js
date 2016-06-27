@@ -5,13 +5,13 @@
 
     function ContactController(artistService, $scope, $routeParams) {
         var self = this;
-        var id = $routeParams.artistId;
+        self.artistId = $routeParams.artistId;
 
         self.artist = {};
 
         function findArtistById() {
             self.artist = {};
-            return artistService.findArtistById(id).then(function (response) {
+            return artistService.findArtistById(self.artistId).then(function (response) {
                 if (response) {
                     self.artist = response.data;
 

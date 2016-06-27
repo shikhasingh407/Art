@@ -33,13 +33,21 @@
                 <span ng-show="submitted && myForm.name.$error.required" class="err">*Required Field</span>
             </div>
 
-            <label for="html">Description</label>
-            <div id="html" class="form-group" ng-model="model.blog.text"
-                 text-angular
-                 ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
-                ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
-                ['indent','outdent'],['html']]">
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input ng-model="model.blog.description"
+                       type="textarea"
+                       class="form-control"
+                       id="description"
+                       placeholder="Blog description">
             </div>
+            <!--<label for="">Description</label>-->
+            <!--<imput class="form-group" type="text" class="form-control" id="html" ng-model="model.blog.text">-->
+                 <!--&lt;!&ndash;text-angular&ndash;&gt;-->
+                 <!--&lt;!&ndash;ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],&ndash;&gt;-->
+                <!--&lt;!&ndash;['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],&ndash;&gt;-->
+                <!--&lt;!&ndash;['indent','outdent'],['html']]">&ndash;&gt;-->
+            <!--</imput>-->
 
         </form>
         <a class="btn btn-danger btn-block" ng-click="model.deleteBlog()">Delete</a>

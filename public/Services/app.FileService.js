@@ -13,7 +13,8 @@
       getAllArt: getAllArt,
       deleteArt: deleteArt,
       setArt2 : setArt2,
-      getArt2 : getArt2
+      getArt2 : getArt2,
+      deleteArtFromPortfolio: deleteArtFromPortfolio
       //editArt: editArt
     };
 
@@ -44,6 +45,11 @@
 
     function deleteArt(artId){
     return $http.delete(baseUrl +"/art/"+artId).then(successfulProcess).catch(failedProcess);
+    }
+
+    function deleteArtFromPortfolio(artId, portfolio){
+      console.log(portfolio);
+      return $http.update(baseUrl +"/portfolio/"+portfolio._id, portfolio).then(successfulProcess).catch(failedProcess);
     }
 
     function getArt2(){

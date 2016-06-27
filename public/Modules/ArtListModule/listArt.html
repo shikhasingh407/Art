@@ -1,8 +1,14 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#/profile" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left">
+                    </span>
+                </a>
+            </p>
             <a class="navbar-brand">
-                <Strong>My complete art collection</Strong>
+                <Strong>Your complete art collection</Strong>
             </a>
             <p class="navbar-text pull-right">
                 <a href="#/artist/{{listCtrl.artistId}}/art" class="navbar-link">
@@ -40,6 +46,8 @@
                         Add this art to the portfolio! :D
                         <span class="caret"></span>
                     </button>
+                </div>
+                <div>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                         <li ng-click="listCtrl.addToPortfolio(portfolio, art)" ng-repeat="portfolio in listCtrl.portfolios">
                             <a href>{{portfolio.name}}</a>

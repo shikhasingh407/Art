@@ -20,7 +20,9 @@
                                 <span class="input-group-addon"><i class="fa fa-certificate" aria-hidden="true"></i></span>
                                 <input type="text" class="form-control" placeholder="Art Name" ng-model="uploadCtrl.form.artName">
                             </div>
+                            <br class="show-sm"/>
                         </div>
+
                         <div class="col-xs-12 col-md-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
@@ -114,9 +116,11 @@
                     <button type="button" class="btn btn-default" aria-label="Settings" ng-click="uploadCtrl.uploadArt()">
                         SAVE
                     </button>
-                    <button type="button" class="btn btn-default btn btn-danger" ng-click="uploadCtrl.cancel()">
+                    <a ng-href="#/artist/{{uploadCtrl.artistId}}/art/list" class="btn btn-default" >BACK</a>
+                    <button type="button" class="btn btn-default" ng-click="uploadCtrl.cancel()">
                         DELETE
                     </button>
+
                 </div>
             </div>
 

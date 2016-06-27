@@ -53,7 +53,13 @@
                   controllerAs: "model"
               })
 
-                          .
+              .when("/artist/:id/portfolio/:portfolioId", {
+                  templateUrl: "Modules/PortfolioModule/PortfolioEdit.html",
+                  controller: "PortfolioEditController",
+                  controllerAs: "model"
+              })
+
+              .
           when('/artist/:id/art', {
             templateUrl: 'Modules/ArtUploadModule/UploadForm.html',
             controller: 'FileUploadController',

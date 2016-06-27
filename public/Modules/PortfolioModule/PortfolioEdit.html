@@ -1,22 +1,49 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand">
-                <Strong>My complete art collection</Strong>
-            </a>
-            <p class="navbar-text pull-right">
-                <a href="#/artist/{{listCtrl.artistId}}/art" class="navbar-link">
-                    <span class="glyphicon glyphicon-plus">
+
+            <p class="navbar-text pull-left">
+                <a href="#/artist/{{model.artistId}}/portfolio" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left">
                     </span>
                 </a>
             </p>
+
+            <p class="navbar-text pull-right">
+                <a class="navbar-link" ng-click="model.deletePortfolio()">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </a>
+            </p>
+
         </div>
     </div>
 </nav>
+<hr>
+<hr>
 
+<form name="myForm">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input ng-model="model.portfolio.name"
+               name="name"
+               type="text"
+               class="form-control"
+               id="name"
+               placeholder="Name">
+    </div>
+
+    <div class="form-group">
+        <label for="title">Description</label>
+        <input ng-model="model.portfolio.description"
+               type="textarea"
+               class="form-control"
+               id="title"
+               placeholder="Description">
+    </div>
+  </form>
 <div class="row">
     <div class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3">
-        <div class="panel panel-default" ng-repeat="art in listCtrl.arts">
+        <div class="panel panel-default" ng-repeat="art in model.portfolio.arts">
             <div class="panel-heading">{{art.artName}} by {{art.artistName}}</div>
             <div class="panel-body">
 
@@ -30,31 +57,34 @@
                 </div>
             </div>
             <div class="panel-footer">
-
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default" ng-click="listCtrl.editArt(art)">Edit</button>
-                    <button type="button" class="btn btn-default" ng-click="listCtrl.deleteArt(art)">Delete</button>
-                </div>
-                <div class="dropdown pull-right">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Add this art to the portfolio! :D
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li ng-click="listCtrl.addToPortfolio(portfolio, art)" ng-repeat="portfolio in listCtrl.portfolios">
-                            <a href>{{portfolio.name}}</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!---->
-                <!--<div class="btn btn-primary" ng-click="listCtrl.addToPortfolio(portfolio, art)"-->
-                <!--ng-repeat="portfolio in listCtrl.portfolios">-->
-                <!--{{portfolio.name}}-->
-                <!--</div>-->
-
+                <button class="btn btn-danger" ng-click="model.deleteArtFromPortfolio(art, model.portfolio)">DELETE</button>
             </div>
         </div>
     </div>
 </div>
+</div>
+
+<!--<div class="row">-->
+    <!--<div class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3">-->
+        <!--<div class="panel panel-default" ng-repeat="art in portfolio.arts">-->
+
+            <!--<div class="panel-body">-->
+
+                <!--<div ng-repeat="image in model.arts">-->
+                    <!--<img class="img-rounded image-responsive" style="max-width: 100%; height: auto"-->
+                         <!--data-ng-src="data:image/jpeg;base64,{{image.imageData}}">-->
+
+                    <!--&lt;!&ndash;<div class="carousel-caption">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<h4>Slide {{$index + 1}}</h4>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--</div>-->
+                <!--<div class="btn-group">-->
+                    <!--&lt;!&ndash;<button type="button" class="btn btn-default" ng-click="listCtrl.editArt(art)">Edit</button>&ndash;&gt;-->
+                    <!--<button type="button" class="btn btn-default" ng-click="model.deletePortfolio()">Delete</button>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
 </div>

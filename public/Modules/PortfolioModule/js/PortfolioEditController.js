@@ -4,100 +4,58 @@
 
 
 (function () {
-    angular.module("art").controller('ListArtController', ListArtController);
+    angular.module("art").controller('PortfolioEditController', PortfolioEditController);
 
-    ListArtController.$inject = ['$location', 'FileService', '$routeParams', 'ArtistService', 'PortfolioService'];
+    PortfolioEditController.$inject = ['FileService','$location', '$routeParams', 'PortfolioService'];
 
-    function ListArtController($location, fileService, $routeParams, ArtistService, PortfolioService) {
+    function PortfolioEditController(FileService, $location, $routeParams,  PortfolioService) {
 
-        var self = this;
-        self.arts = [];
-        self.editArt = editArt;
-        self.deleteArt = deleteArt;
-        self.getAllArt = getAllArt;
-        self.artistId = $routeParams.id;
-        self.addToPortfolio = addToPortfolio;
-        self.portfolios = [];
+        var vm = this;
 
-        function getPortfolios(){
-            PortfolioService
-                .findPortfoliosForArtistId(self.artistId)
-                .then(function(response){
-                    self.portfolios = response.data;
-                    console.log(self.portfolios)
-                });
+        vm.portfolioId = $routeParams.portfolioId;
+
+        vm.deleteArtFromPortfolio = deleteArtFromPortfolio;
+        //vm.getAllArt = getAllArt;
+        vm.artistId = $routeParams.id;
+
+        vm.portfolio = [];
+
+        //vm.deleteArt = deleteArt;
+
+        function deleteArtFromPortfolio(art, portfolio){
+            var index = portfolio.arts.indexOf(art);
+            if(index > -1){
+                portfolio.arts.splice(index,1);
+            }
+         FileService.deleteArtFromPortfolio(art._id, portfolio).then(function(response){
+
+             if(response === "OK"){
+
+                 init();
+             }
+            }, function(errr){
+
+         });
         }
 
         function init() {
-            //  var artistName = 'ShikhaSingh';
-            ArtistService
-                .findArtistById(self.artistId)
+            PortfolioService
+                .findPortfolioByPortfolioId(vm.portfolioId)
                 .then(function (response) {
-                    artistName = response.data.username;
-                    getAllArt(artistName);
-                    getPortfolios();
+                    vm.portfolio = response.data;
                 });
         }
 
         init();
 
-        function editArt(art) {
-            console.log('edit art called');
-            fileService.setArt2(art);
-            $location.path("/artist/" + self.artistId + "/art");
+
+        function deletePortfolio() {
+            var result = PortfolioService.deletePortfolio(vm.portfolioId);
+            if (result) {
+                $location.url("/artist/" + vm.artistId + "/portfolio");
+            } else {
+                vm.error = "Unable to delete the portfolio";
+            }
         }
-
-
-        function getAllArt(artistName) {
-            fileService.getAllArt(artistName).then(
-                function (response) {
-                    if (response instanceof Array) {
-                        self.arts = response;
-                    } else {
-                        self.arts.push(response);
-                    }
-                },
-                function (error) {
-                    swal("Error", "Fetching your art info failed, Please try again later : " + error, "error");
-                });
-        }
-
-
-        function deleteArt(art) {
-            fileService
-                .deleteArt(art._id)
-                .then(function (response) {
-
-                    if (response == "OK") {
-                        var index = self.arts.indexOf(art);
-                        if (index > -1) {
-                            self.arts.splice(index, 1);
-                        }
-                    }
-
-
-                    else
-                        self.error = "Unable to delete the blog";
-                });
-        }
-
-        function addToPortfolio(portfolio, art) {
-            portfolio.arts = portfolio.arts || [];
-            portfolio.arts.push(art);
-            PortfolioService
-                .updatePortfolio(portfolio._id, portfolio)
-                .then(function (response) {
-
-                    if (response == "OK") {
-
-                    }
-                    else
-                        self.error = "Unable to add to the blog";
-                });
-        }
-
     }
-
-
-
 })();

@@ -3,7 +3,7 @@
         <div class="navbar-header">
 
             <p class="navbar-text pull-left">
-                <a href="#/artist/{{model.artistId}}" class="navbar-link">
+                <a href="#/profile" class="navbar-link">
                     <span class="glyphicon glyphicon-chevron-left">
                     </span>
                 </a>
@@ -21,17 +21,17 @@
         </div>
     </div>
 </nav>
-<hr><hr><hr><hr><hr>
+<hr><hr>
 
 
 <div class="container">
     <ul class="list-group">
         <li ng-repeat="portfolio in model.portfolios" class="list-group-item borderless">
+                <a>{{portfolio.name}}</a>
 
-                {{portfolio.name}}
                 <!--{{portfolio.description}}-->
 
-            <a href="#/art/list" class="pull-right">
+            <a href="#/artist/{{model.artistId}}/portfolio/{{portfolio._id}}" class="pull-right">
                 Edit
                 <span class="glyphicon glyphicon-cog"></span>
             </a>

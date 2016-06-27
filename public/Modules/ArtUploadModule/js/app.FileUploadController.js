@@ -16,10 +16,11 @@
 
     var artObj = fileService.getArt2();
     if(artObj === null){
+      self.form = {};
       init();
     }
     else{
-        self.form = artObj;
+        self.form = artObj || {};
     }
 
 
@@ -28,8 +29,8 @@
       ArtistService
           .findArtistById(self.artistId)
           .then(function(response){
-            self.artistName = response.data.username;
-            self.form.artistName = response.data.username;
+            self.artistName = response.data.name;
+            self.form.artistName = response.data.name;
           });
     }
 
