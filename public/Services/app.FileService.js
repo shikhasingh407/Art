@@ -66,7 +66,7 @@
     }
 
     function setArt2(art){
-      artObj = art || null;
+      return artObj = art || null;
     }
 
   }

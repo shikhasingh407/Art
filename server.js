@@ -109,7 +109,6 @@ app.post('/rest/upload', function (req, res) {
             encoding: req.files[i].encoding
         };
         artData.uploadedImages.push(image);
-        console.log(image);
     }
 
     var newArtObject = new artModel(artData);
@@ -136,13 +135,12 @@ app.put('/rest/upload', function (req, res) {
             encoding: req.files[i].encoding
         };
         artData.uploadedImages.push(image);
-        console.log(image);
     }
     artModel
         .update({_id: artData._id},{
             $set: {
                 //uniqueName: artData.uniqueName,
-                artName: artData.artname,
+                artName: artData.artName,
                 //artistName: artData.artistName,
                 artType: artData.artType,
                 description: artData.description,
