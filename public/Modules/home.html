@@ -1,5 +1,5 @@
 <div class="header">
-    <div class="navbar navbar-default" role="navigation">
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
 
@@ -26,16 +26,12 @@
     </div>
 </div>
 
-
-
-<div class="row">
+<div class="row padded">
     <img src="Modules/11.jpg" width="100%" class="background-image image-responsive">
     <div class="col-xs-12">
        <h1>Welcome back, {{model.artist.name}}</h1>
-        <image width="50%" data-ng-src="data:image/jpeg;base64,{{model.artist.displayPic[0].imageData}}" class="img-circle img-responsive"/>
-
-
     </div>
+    <image width="50%" data-ng-src="data:image/jpeg;base64,{{model.artist.displayPic[0].imageData}}" class="img-circle img-responsive"/>
 </div>
 
 <!--<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">-->

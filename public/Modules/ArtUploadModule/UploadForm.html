@@ -47,22 +47,47 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-xs-12 col-md-6">
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <p>Art Type</p>
-                                </div>
-                                <div class="col-xs-12">
-                                    <div class="btn-group">
-                                        <select ng-model="uploadCtrl.form.artType" class="dropdown-menu">
-                                            <option value="type" ng-repeat="type in uploadCtrl.artType">{{type}}</option>
-                                        </select>
-                                    </div>
-                                    
+                        <div class="dropdown pull-left">
+                            <label for="dropdownMenu1">Art type</label>
+                            <button class="btn btn-default dropdown-toggle" type="button"
+                                    id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                {{uploadCtrl.form.artType}}
+                                <span class="caret"></span>
+                            </button>
+                            <ul ng-model="uploadCtrl.form.artType" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li value="type" ng-repeat="type in uploadCtrl.artType">
+                                    <a ng-click="uploadCtrl.form.artType = type">{{type}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                                </div>
+
+
+
+
+                        <!--<div class="col-xs-12 col-md-6">-->
+                            <!--<div class="row">-->
+                                <!--<div class="col-xs-12">-->
+                                    <!--<p>Art Type</p>-->
+                                <!--</div>-->
+                                <!--<div class="col-xs-12">-->
+                                    <!--<div class="btn-group">-->
+                                        <!--<select ng-model="uploadCtrl.form.artType" class="dropdown-menu">-->
+                                            <!--<option value="type" ng-repeat="type in uploadCtrl.artType">{{type}}</option>-->
+                                        <!--</select>-->
+                                    <!--</div>-->
+                                    <!---->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
                     <br/>
                     <div class="row">
                         <div class="col-xs-12">

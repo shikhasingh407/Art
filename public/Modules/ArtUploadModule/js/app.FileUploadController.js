@@ -27,6 +27,7 @@
         self.form.availableFrom = new Date(self.form.availableFrom);
       self.form.startDate = new Date(self.form.startDate);
       self.editMode = true;
+      self.form.artType = artObj.artType;
     }
 
 
