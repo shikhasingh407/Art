@@ -32,10 +32,12 @@ var GoogleStrategy = require('passport-google-oauth2').Strategy;
 
 app.use(express.static(__dirname + '/public'));
 app.use(cors());
-app.use(bodyParser({'limit':'50mb'}));
+app.use(bodyParser({'limit':'500mb'}));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(session({ secret: process.env.SESSION_SECRET}));
+app.use(session({
+    secret: process.env.SESSION_SECRET
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 

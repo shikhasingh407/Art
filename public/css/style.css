@@ -84,3 +84,8 @@ input.ng-touched.ng-invalid-required.form-control:focus {
 input.ng-touched.ng-invalid-required.form-control {
     background-color: #ffebfa;
 }
+
+.home-back{
+    padding:26px;
+background:url('../Modules/background.png');background-repeat: repeat;backround-size:cover;height:100vh;border-left: 3px solid #eaeaea;border-right:3px solid #eaeaea;
+}
